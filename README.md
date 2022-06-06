@@ -3,19 +3,24 @@
 Repo build based on Youtube - Belajar Membangun RestAPI dengan Spring Boot Framework - Bahasa Indonesia
 by Kelas Koding - [https://www.youtube.com/watch?v=Z0JfmObjKRw](https://www.youtube.com/watch?v=Z0JfmObjKRw)
 
-### Reference Documentation
-For further reference, please consider the following sections:
+# Database
+On this repo we are using mysql on docker host with `spring_wallet` table, you can edit `src/main/resources/application.properties`
+```
+host.docker.internal:3306/spring_wallet
+```
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#web)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#using.devtools)
+# How to run in docker
 
-### Guides
-The following guides illustrate how to use some features concretely:
+- run docker.sh
+- build war file using : `mvn package`
+- copy .war file to docker : `docker cp target/wallet-0.0.2-SNAPSHOT.war wildfly:/demo.war`
+- go to docker shell and copy .war file to wildfly deployment :
+```
+sh-4.2$ cd /  
+sh-4.2$ cp demo.war /opt/jboss/wildfly/standalone/deployments
+```
+- wildfly will deploy this demo.war
+- your api will be available at `http://localhost:8080/demo/api/wallets`
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-
+![](2022-06-06-11-56-50.png)
+![](2022-06-06-11-59-18.png)

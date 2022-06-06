@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+wildfly/
+.DS_STORE
